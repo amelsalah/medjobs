@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>MedJobs - UAE Careers</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <meta charset="UTF-8">
+    <title>MedJobs - UAE Careers</title>
+
+</head>
+<body>
+    <header>
+        MedJobs – UAE Careers
+    </header>
+
+    <form method="get" class="search-bar">
+        <input type="text" name="q" placeholder="Search jobs..." value="{{ request.GET.q }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="layout">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <h3>Hospitals</h3>
+            <a href="?">All ({{ total_jobs }})</a>
+            {% for h in hospital_counts %}
+                <a href="?hospital={{ h.hospital_name }}">{{ h.hospital_name }} ({{ h.total }})</a>
+            {% endfor %}
+
+            <h3>Cities</h3>
+            {% for c in city_counts %}
+                <a href="?city={{ c.location }}">{{ c.location }} ({{ c.total }})</a>
+            {% endfor %}
+        </aside>
+
+        <!-- Kanban Grid -->
+        <div class="kanban-container">
+            {% for job in jobs %}
+            <div class="job-card">
+                <a href="{{ job.job_url }}" target="_blank" class="job-title">{{ job.title }}</a>
+                <div class="job-meta">
+                    <span>🏥 {{ job.hospital_name }}</span>
+                    <span>📍 {{ job.location }}</span>
+                    <span>📅 {{ job.posted_date }}</span>
+                </div>
+            </div>
+            {% empty %}
+            <div class="no-jobs">No jobs found.</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        {% if jobs.has_previous %}
+            <a href="?page={{ jobs.previous_page_number }}{% if query %}&q={{ query }}{% endif %}{% if hospital %}&hospital={{ hospital }}{% endif %}{% if city %}&city={{ city }}{% endif %}">Previous</a>
+        {% endif %}
+
+        {% for num in jobs.paginator.page_range %}
+            {% if jobs.number == num %}
+                <span class="current">{{ num }}</span>
+            {% else %}
+                <a href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}{% if hospital %}&hospital={{ hospital }}{% endif %}{% if city %}&city={{ city }}{% endif %}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if jobs.has_next %}
+            <a href="?page={{ jobs.next_page_number }}{% if query %}&q={{ query }}{% endif %}{% if hospital %}&hospital={{ hospital }}{% endif %}{% if city %}&city={{ city }}{% endif %}">Next</a>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+    <title>MedJobs - Healthcare Careers in UAE</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e6f9f1, #ffffff);
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .search-box {
+            margin: 30px auto;
+            text-align: center;
+        }
+        .search-box input {
+            width: 50%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            outline: none;
+        }
+        .search-box button {
+            padding: 12px 20px;
+            border: none;
+            background: #2ecc71;
+            color: white;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .search-box button:hover {
+            background: #27ae60;
+        }
+        .hospitals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            max-width: 100px;
+            margin-bottom: 15px;
+        }
+        .browse-jobs {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .browse-jobs a {
+            background: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .browse-jobs a:hover {
+            background: #219150;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>MedJobs</h1>
+        <p>Your gateway to healthcare careers in the UAE</p>
+    </header>
+
+    <div class="search-box">
+        <form method="get" action="{% url 'job_list' %}">
+            <input type="text" name="q" placeholder="Search jobs by title or hospital...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <section class="hospitals">
+        <div class="card">
+            <img src="/static/logos/seha.png" alt="SEHA">
+            <h3>SEHA</h3>
+        </div>
+        <div class="card">
+            <img src="/static/logos/nmc.png" alt="NMC">
+            <h3>NMC</h3>
+        </div>
+        <div class="card">
+            <img src="/static/logos/aster.png" alt="Aster">
+            <h3>Aster</h3>
+        </div>
+        <div class="card">
+            <img src="/static/logos/burjeel.png" alt="Burjeel">
+            <h3>Burjeel</h3>
+        </div>
+    </section>
+
+    <div class="browse-jobs">
+        <a href="{% url 'job_list' %}">Browse All Jobs</a>
+    </div>
+
+</body>
+</html>
