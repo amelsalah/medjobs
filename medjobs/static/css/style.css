@@ -1,0 +1,177 @@
+/* === Global Branding Colors === */
+:root {
+    --brand-main: #3f7999;
+    --brand-dark: #2f5d75;
+    --brand-light: #6da2bd;
+    --bg-light: #f9fdf9;
+}
+
+/* Reset & Base */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, var(--brand-main), var(--brand-light));
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.search-bar input[type="text"] {
+    width: 70%;
+    padding: 12px;
+    border: 2px solid var(--brand-main);
+    border-radius: 8px 0 0 8px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 12px 20px;
+    border: none;
+    background-color: var(--brand-main);
+    color: white;
+    font-weight: bold;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: var(--brand-dark);
+}
+
+/* Layout */
+.layout {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #ffffff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.sidebar h3 {
+    color: var(--brand-dark);
+    margin-top: 0;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.sidebar a {
+    display: block;
+    margin: 8px 0;
+    text-decoration: none;
+    color: #333;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.sidebar a:hover {
+    background: #e6f1f7;
+    color: var(--brand-main);
+}
+
+/* Kanban Grid */
+.kanban-container {
+    flex-grow: 1;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Job Card */
+.job-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-top: 6px solid var(--brand-main);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 12px rgba(0,0,0,0.1);
+}
+
+.job-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--brand-main);
+    margin-bottom: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.job-meta {
+    font-size: 14px;
+    color: #555;
+}
+
+.job-meta span {
+    display: block;
+    margin-top: 4px;
+}
+
+/* No Jobs */
+.no-jobs {
+    text-align: center;
+    grid-column: span 3;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    color: #777;
+}
+
+/* Pagination */
+.pagination {
+    margin: 30px auto;
+    text-align: center;
+    width: 100%;
+}
+
+.pagination a, .pagination span {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: 1px solid var(--brand-main);
+    color: var(--brand-main);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.pagination a:hover {
+    background: var(--brand-main);
+    color: white;
+}
+
+.pagination .current {
+    background: var(--brand-main);
+    color: white;
+}
